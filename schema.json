@@ -1,0 +1,21 @@
+[
+  {
+    "table_name": "Employee",
+    "file_name" : "./Employee.sql",
+    "fields": [
+      {"name": "id", "type": "int"},
+      {"name": "name", "type": "char(255)"},
+      {"name": "salary", "type": "float"}
+    ]
+  },
+  {
+    "table_name": "Mathematics",
+    "file_name" : "./Mathematics.sql",
+    "fields": [
+      {"name": "id", "type": "int"},
+      {"name": "book_name", "type": "char(50)"},
+      {"name": "author", "type": "varchar(40)"},
+      {"name": "price", "type": "float"}
+    ]
+  }
+]

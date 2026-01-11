@@ -10,8 +10,15 @@ with open('schema.json') as schema_file:
 
 # convert schema to a dictionary for lookup faster than looping through a list `O(1) in Average case`
 schema_dict = {table["table_name"]: table for table in schema}
- 
 
+# {'Employee': 
+#     {'table_name': 'Employee', 
+#      'file_name': './Employee.sql', 
+#      'fields': [{'name': 'id', 'type': 'int'}, 
+#                 {'name': 'name', 'type': 'char(255)'}, 
+#                 {'name': 'salary', 'type': 'float'}]}, 
+#
+# 'Mathematics': (...etc)
 
 def get_table_schema(table_name, schema_dict):
     try:
@@ -23,6 +30,8 @@ def get_table_schema(table_name, schema_dict):
 
 def are_constraints_violated(record_dict, table_schema):
     
+    # print(record_dict)
+
     # Define MIN and MAX int
     MIN_INT = -2_147_483_647
     MAX_INT = 2_147_483_647
@@ -33,6 +42,7 @@ def are_constraints_violated(record_dict, table_schema):
 
     # check record_dict contains all the necessary fields
     fields_of_table_schema = {}
+    
     for field in table_schema["fields"]:
 
         field_name = field["name"]
@@ -108,6 +118,7 @@ def are_constraints_violated(record_dict, table_schema):
                 
         elif field_type  == "float":
 
+            # print(field_type)
             try:
                 float(value)
             except:
@@ -331,6 +342,7 @@ def read_all_structured_records(table_name, schema_dict):
                       )
 
     return records
+
 
 
 
